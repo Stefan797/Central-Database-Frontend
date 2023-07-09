@@ -8,13 +8,21 @@ import { AllTodosComponent } from './components/all-todos/all-todos.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { IndexcardsComponent } from './components/indexcards/indexcards.component';
+import { ContentComponent } from './components/content/content.component';
+import { MainComponent } from './components/main/main.component';
+
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { EnglishComponent } from './components/english/english.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AllTodosComponent,
-    IndexcardsComponent
+    IndexcardsComponent,
+    ContentComponent,
+    MainComponent,
+    EnglishComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,13 @@ import { IndexcardsComponent } from './components/indexcards/indexcards.componen
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,10 @@
-<p>indexcards works!</p>
+<div class="index-cards-page">
+    <!-- <div class="selection-query-possibility-container">
+        <div (click)="changetowritetrainee()">Schreiben</div>
+        <div (click)="changetospeaktrainee()">Sprechen</div>
+    </div> -->
+    <div *ngFor="let indexcard of indexcards">
+        <span>{{ indexcard.english }}</span>
+        <span>{{ indexcard.german }}</span>
+    </div>
+</div>

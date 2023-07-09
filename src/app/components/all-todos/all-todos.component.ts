@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -14,9 +14,7 @@ export class AllTodosComponent implements OnInit {
   
   error = '';
 
-  // Anlegen eines Http servies get post put
-  // https://www.telerik.com/blogs/angular-basics-how-to-use-httpclient
-  constructor(private http: HttpClient) {}
+  constructor(private httpService: HttpService) {}
 
   async ngOnInit() {
     try {
@@ -29,7 +27,7 @@ export class AllTodosComponent implements OnInit {
 
   loadTodos() {
     const url = environment.baseUrl + "/todos/";
-    return lastValueFrom(this.http.get(url));
+    return lastValueFrom(this.httpService.getrequest(url));
   }
 
 }

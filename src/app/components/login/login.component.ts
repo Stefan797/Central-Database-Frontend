@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       let resp: any = await this.as.loginWithUsernameAndPassword(this.username, this.password);
       console.log(resp);
       localStorage.setItem('token', resp['token']);
-      this.router.navigateByUrl('/todos');
+      this.router.navigateByUrl('/home');
     } catch (e) {
       alert('Login failed');
       console.error(e);
